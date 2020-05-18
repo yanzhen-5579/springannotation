@@ -17,18 +17,18 @@ public class MainConfig2 {
     @Bean
     public Person person(){
         System.out.println("给容器中添加person");
-        return  new Person("zhangsan",123);
+        return  new Person("zhangsan",123,null);
     }
 
     @Bean("bill")
     @Conditional(WindowsCondition.class)
     public Person person1(){
-        return new Person("bill",65);
+        return new Person("bill",65,null);
     }
     @Bean("linus")
     @Conditional(LinuxCondition.class)
     public Person person2(){
-        return new Person("linus",44);
+        return new Person("linus",44,null);
     }
 
     @Bean

@@ -21,8 +21,8 @@ public class MainTest {
     @Test
     public void testImport(){
         beanNames(applicationContext);
-        Object colorFactoryBean = applicationContext.getBean("&colorFactoryBean");
-        System.out.println(colorFactoryBean);
+//        Object colorFactoryBean = applicationContext.getBean("colorFactoryBean");
+//        System.out.println(colorFactoryBean);
     }
 
     @Test

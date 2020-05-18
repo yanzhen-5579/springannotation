@@ -19,6 +19,6 @@ import org.springframework.stereotype.Service;
 public class MainConfig {
     @Bean("person")
     public Person get(){
-        return new Person("xiaoli",123);
+        return new Person("xiaoli",123,null);
     }
 }
