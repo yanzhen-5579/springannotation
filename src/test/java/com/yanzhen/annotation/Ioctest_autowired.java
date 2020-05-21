@@ -10,9 +10,10 @@ public class Ioctest_autowired {
     public void test_cycle(){
         AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(MainConfigAutowired.class);
         Object bookService = annotationConfigApplicationContext.getBean("boss");
-        System.out.println(bookService);
+//        System.out.println(bookService);
         Object car = annotationConfigApplicationContext.getBean("car");
-        System.out.println(car);
+//        System.out.println(car);
+        System.out.println(annotationConfigApplicationContext);
         annotationConfigApplicationContext.close();
     }
 }

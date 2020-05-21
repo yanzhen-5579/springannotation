@@ -1,0 +1,33 @@
+首先是spring容器的创建和刷新
+1.prepareRefresh();  是容器刷新前的预处理
+        initPropertySources()   初始化一些属性  是让子类去自定义的。
+        getEnvironment().validateRequiredProperties();  属性校验
+        earlyApplicationEvents  保存容器的一些事件
+2.obtainFreshBeanFactory   获取bean工厂
+        refreshBeanFactory（）刷新bean工厂
+                创建一个bean工厂    并设置id
+        getBeanFactory();  得到刚创建的bean工厂
+        将创建的bean工厂返回
+3、prepareBeanFactory(beanFactory); bean工厂的预准备工作
+            注册可以解析的自动装配等  就是在类中可以@autowired的组件
+4.postProcessBeanFactory(beanFactory);  beanfactory创建完成之后   后置处理器的一些准备工作  是空方法  需要子类去完成
+=======================beanfactory的创建和预准备工作=========================
+5.invokeBeanFactoryPostProcessors(beanFactory); 执行BeanFactoryPostProcessors的方法
+        BeanFactoryPostProcessors   beanfactory的后置处理器   在beanfactory标准初始化之后执行
+        两个接口 BeanFactoryPostProcessor  BeanDefinitionRegistryPostProcessor
+        执行BeanFactoryPostProcessors的方法
+6.registerBeanPostProcessors(beanFactory);  注册BeanPostProcessors  bean的后置处理器   拦截bean的创建过程
+        获取所有的beanpostprocessor     后置处理器都有优先级
+7. initMessageSource();   初始化国际化部分
+8.initApplicationEventMulticaster();  初始化事件派发器
+9.onRefresh();  留给子容器的
+10.registerListeners();给容器中注册所有的监听器
+        1.从容器中拿到所有的listener组件
+        2.将每个监听器添加到派发器中
+11.finishBeanFactoryInitialization(beanFactory);  初始化所有的单实例bean
+        1.beanFactory.preInstantiateSingletons(); 初始化剩下的单实例bean
+        2.获取bean的定义信息  RootBeanDefinition
+
+        ====================================
+后置处理器
+        每一个bean创建完成的时候都会用后置处理器去增强
